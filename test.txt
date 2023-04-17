@@ -1,0 +1,34 @@
+
+const int buzzer = 9; 
+const int ProxSensor=3;
+const int button = 2;
+void setup(){
+  pinMode(buzzer, OUTPUT); // Set buzzer - pin 9 as an output
+  pinMode(button, INPUT); 
+  pinMode(ProxSensor,INPUT);
+  digitalWrite(button, HIGH);
+    Serial.begin(9600);
+
+  
+}
+
+void alarm(){
+  int  buttonState = digitalRead(button);
+
+  if (buttonState != HIGH){
+    tone(buzzer, 10); // Send 1KHz sound signal...
+    delay(100);        // ...for 1 sec
+    noTone(buzzer);     // Stop sound...
+    delay(100);        // ...for 1sec
+  }
+}
+void loop(){
+   //alarm();
+   //digitalWrite(2, HIGH);
+   //delay(1000);
+   digitalWrite(3, HIGH);
+  int inputVal = digitalRead(ProxSensor);
+  Serial.println(inputVal);
+  delay(1000); 
+   //   digitalWrite(2, LOW);
+}
